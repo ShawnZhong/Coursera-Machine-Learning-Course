@@ -16,7 +16,8 @@ sim = 0;
 %
 %
 
-
+sumError = sum((x1 - x2) .^ 2);
+sim = exp(-sumError / (2 * sigma ^ 2));
 
 
 
