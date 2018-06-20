@@ -40,19 +40,15 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+diff = X * Theta' - Y;
+diff_cond = diff .* R;
 
+J_cost = sum(diff_cond(:) .^ 2);
+J_reg = sum(Theta(:) .^ 2) + sum(X(:) .^ 2);
+J = (J_cost + lambda * J_reg) / 2;
 
-
-
-
-
-
-
-
-
-
-
-
+X_grad = diff_cond * Theta + lambda * X;
+Theta_grad = diff_cond' * X + lambda * Theta;
 
 
 % =============================================================
